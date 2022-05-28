@@ -57,7 +57,7 @@ public enum DiagramType
 	
 	METAMODEL(
 			"MetaModelDiagram",
-			".metamodel",
+			"",
 			MetaModelDiagramBuilder::new, 
 			new DiagramViewer(), 
 			new DiagramElement [] { 

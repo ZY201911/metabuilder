@@ -39,12 +39,12 @@ import javafx.stage.FileChooser.ExtensionFilter;
  */
 public final class FileExtensions
 {
-	private static final String EXTENSION_JET = ".xml";
+	private static final String EXTENSION_JET = ".xmi";
 	
 	private static final ExtensionFilter FILTER_APPLICATION = 
 			new ExtensionFilter(RESOURCES.getString("application.file.name"), "*" + EXTENSION_JET);
-	private static final ExtensionFilter FILTER_ALL = 
-			new ExtensionFilter(RESOURCES.getString("application.file.all"), "*.*");
+//	private static final ExtensionFilter FILTER_ALL = 
+//			new ExtensionFilter(RESOURCES.getString("application.file.all"), "*.*");
 	
 	private static Map<DiagramType, ExtensionFilter> aExtensionFilters = createFilters();
 	
@@ -73,7 +73,7 @@ public final class FileExtensions
 				.map(Map.Entry::getValue)
 				.collect(toList());
 		result.add(0, FILTER_APPLICATION);
-		result.add(FILTER_ALL);
+//		result.add(FILTER_ALL);
 		return Collections.unmodifiableList(result);
 	}
 	
