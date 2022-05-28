@@ -148,7 +148,7 @@ public final class XmlEncoder
 	
 	private static void encodeChildren(Node pNode, SerializationContext pContext)
 	{
-		pNode.getChildren().forEach(child -> attr.addAttribute("", "", "children", "", pContext.getId(child) + ""));
+		pNode.getChildren().forEach(child -> encodeNode(child, pContext));
 	}
 	
 	private static void encodeEdges(AbstractContext pContext)
