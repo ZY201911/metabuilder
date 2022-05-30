@@ -36,6 +36,8 @@ public final class ClassNode extends TypeNode
 	
 	private ClassNode extendsClass = null;
 	
+	private InterfaceNode implementsInterface = null;
+	
 	private ArrayList<String> attributesArray = new ArrayList<String>();
 	
 	/**
@@ -70,6 +72,10 @@ public final class ClassNode extends TypeNode
 		extendsClass = pExtendsClassNode;
 	}
 	
+	public void setImplementsInterface(InterfaceNode pImplementsInterface) {
+		implementsInterface = pImplementsInterface;
+	}
+	
 	public void setAttributesArray(String pAttributes) {
 		String[] attrs = pAttributes.split("\n");
 		for(String attr : attrs) {
@@ -96,6 +102,10 @@ public final class ClassNode extends TypeNode
 	
 	public ClassNode getExtendsClassNode() {
 		return extendsClass;
+	}
+	
+	public InterfaceNode getImplementsInterface() {
+		return implementsInterface;
 	}
 	
 	public ArrayList<String> getAttributesArray() {

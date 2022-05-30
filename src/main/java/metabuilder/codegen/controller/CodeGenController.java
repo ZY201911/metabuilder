@@ -14,9 +14,15 @@ public class CodeGenController {
 
 		engine.setDevMode(true);
 		engine.setToClassPathSourceFactory();
+		engine.addSharedObject("attrSeg", new String[2]);
 		Template tem = engine.getTemplate("ClassTemplate.txt");
-		Kv kv = Kv.by("pClass", pDiagram.rootNodes().get(0));
-		kv = Kv.by("metamodelname", pDiagram.getName());
+		if(pDiagram.rootNodes().get(0) == null) {
+			System.out.println("diagram null error");
+			System.exit(1);
+		}
+//		Kv kv = Kv.by("pClass", pDiagram.rootNodes().get(0));
+		engine.addSharedObject("pClass", pDiagram.rootNodes().get(0));
+		Kv kv = Kv.by("metamodelname", pDiagram.getName());
 		String str = tem.renderToString(kv);
 		System.out.println(str);
 	}

@@ -7,24 +7,25 @@ public
  abstract
 #end
  class #(pClass.getName())
-#if(pClass.extendsClass()!=null)
- extends #(pClass.extendsClass.getName())
+#if(pClass.getExtendsClassNode()!=null)
+ extends #(pClass.getExtendsClassNode.getName())
 #end
-#if(pClass.implementsInterface()!=null)
- implements #(pClass.implementsInterface.getName()) {
+#if(pClass.getImplementsInterface()!=null)
+ implements #(pClass.getImplementsInterface.getName())
+#end
+{
  	//attributes
-    #for(attr : pClassNode.attributesArray)
+    #for(attr : pClass.attributesArray)
     #('protected ' + attr);
     #end
     
     //methods
-    #for(method : pInterfaceNode.methodsArray)
+    #for(method : pClass.methodsArray)
     #('public ' + method);
     #end
 
     //getter
-    #(String[] attrSeg = new String())
-    #for(attr : pClassNode.attributesArray)
+    #for(attr : pClass.attributesArray)
     #(attrSeg = attr.split("\s+"), 2)
     #('public ' + attrSeg[0] + ' get' + attrSeg[1] + '() '){
         return #(attrSeg[1]);
@@ -32,7 +33,7 @@ public
     #end
 
     //setter
-    #for(attr : pClassNode.attributesArray)
+    #for(attr : pClass.attributesArray)
     #(attrSeg = attr.split("\s+"), 2)
     #('public void set' + attrSeg[1] + '(' + attrSeg[0] + 'pNewValue)'){
         #(attrSeg[1] + ' = ' + 'pNewValue');
